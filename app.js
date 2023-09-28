@@ -81,8 +81,8 @@ const startApp = async () => {
 				)
 				console.log('Great! Watermark was added')
 				startApp()
-			} catch (error) {
-				console.log('Something went wrong... Try again')
+			} catch (err) {
+				console.log('Something went wrong... Try again!')
 			}
 		} else console.log('Something went wrong... Try again')
 	} else {
@@ -105,7 +105,7 @@ const startApp = async () => {
 				)
 				console.log('Great! Watermark was added')
 				startApp()
-			} catch (error) {
+			} catch (err) {
 				console.log('Something went wrong... Try again')
 			}
 		} else console.log('Something went wrong... Try again')
