@@ -73,11 +73,17 @@ const startApp = async () => {
 		options.watermarkText = text.value
 
 		if (fs.existsSync('./img/' + options.inputImage)) {
-			addTextWatermarkToImage(
-				'./img/' + options.inputImage,
-				'./img/' + prepareOutputFilename(options.inputImage),
-				options.watermarkText
-			)
+			try {
+				addTextWatermarkToImage(
+					'./img/' + options.inputImage,
+					'./img/' + prepareOutputFilename(options.inputImage),
+					options.watermarkText
+				)
+				console.log('Great! Watermark was added')
+				startApp()
+			} catch (error) {
+				console.log('Something went wrong... Try again')
+			}
 		} else console.log('Something went wrong... Try again')
 	} else {
 		const image = await inquirer.prompt([
@@ -91,11 +97,17 @@ const startApp = async () => {
 		options.watermarkImage = image.filename
 
 		if (fs.existsSync('./img/' + options.inputImage) && fs.existsSync('./img/' + options.watermarkImage)) {
-			addImageWatermarkToImage(
-				'./img/' + options.inputImage,
-				'./img/' + prepareOutputFilename(options.inputImage),
-				'./img/' + options.watermarkImage
-			)
+			try {
+				addImageWatermarkToImage(
+					'./img/' + options.inputImage,
+					'./img/' + prepareOutputFilename(options.inputImage),
+					'./img/' + options.watermarkImage
+				)
+				console.log('Great! Watermark was added')
+				startApp()
+			} catch (error) {
+				console.log('Something went wrong... Try again')
+			}
 		} else console.log('Something went wrong... Try again')
 	}
 }
